@@ -29,12 +29,12 @@ img_inf = np.zeros((200, 200))
 
 
 # TRAINING
-epochs = 300
-lr0 = 0.005
+epochs = 1000
+lr0 = 0.002
 decay = 0.97
 for epoch in range(epochs):
 
-    lr = lr0 * decay ** (epoch/2)
+    lr = lr0 * decay ** (epoch/500)
 
     # FORWARD
     ypred = [n(x) for x in X]
