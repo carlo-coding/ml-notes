@@ -1,0 +1,8 @@
+**What is the attention mechanism** #anki
+So the main mechanism of a transformer is the attention mechanism, which is a general algorithm for communication between nodes, what it does is that it generates a query, key and value vector, from embeddings, using an nn.Linear without bias for each vector, query is the vector which expresses what that token is looking for and key is a vector encoding what it offers for the queries, when making a dot product of those vectors in a tensor of vectors, vectors with more affinity with each other create bigger numbers and vectors with lower affinity create smaller numbers, you get a matrix that tells you the affinity of each token with each other token, that's important because now we can use our value vector multiplied with the affinities to get a much richer representation of each token that carries the attention from previous tokens in the sequence.
+
+**How do we prevent tokens from seeing the future** #anki
+To stop tokens from cheating and seeing the future we need to mask the affinity matrix into a lower triangular matrix, torch.masked_fill(affinity, tril == 0, float("-inf")), you get tril from torch.tril(torch.ones((block_size, block_size))), the trick of setting -inf where there are zeros is important because when we pass this matrix through softmax the -inf entries go to zero, and softmax makes sure every row sums to 1.
+
+**Why do we need to divide by the square root of the channel before softmax** #anki
+Before sending to softmax we have to divide the matrix by the square root of the dimension of key/query channel because then we reduce variance. Softmax tends to spike numbers if they are not normalized.
