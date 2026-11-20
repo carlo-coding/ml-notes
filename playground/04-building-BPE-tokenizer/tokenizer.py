@@ -102,7 +102,7 @@ print("Tokens:", tokens)
 print("Decoded text:", tokenizer.decode(tokens))
 
 # Next Steps
-# [ ] Add more training documents
+# [X] Add more training documents
 # [ ] Send corpus as an array of documents
 # [ ] Add token visualization
 # [ ] Train a tiny transformer on the data

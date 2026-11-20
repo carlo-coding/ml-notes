@@ -1,4 +1,4 @@
-**Get stats function***
+**Get stats function**
 To start we need to encode the text to bytes to list of integers and then go through every pair of integers, counting the frequence of each pair, this function will be very usefull to train the tokenizer.
 
 **Merge function**
